@@ -1,7 +1,8 @@
 export default{
     primary:{
         main:'#324958',
-        contrastText:'#fff'
+        contrastText:'#FFF'
+        
     },
     secondary:{
         main:"#263943",
@@ -11,7 +12,6 @@ export default{
         primary:"#7d8591",
         secondary:"#25d9da",
         disabled:"#b18080",
-        title:"#3c4859",
-        caption:"#dbe0e9"
+       inActiveMenu:'#959696'
     }
 }
