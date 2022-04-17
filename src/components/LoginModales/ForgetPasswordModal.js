@@ -19,7 +19,7 @@ const makeTextFieldStyles = makeStyles({
   },
 });
 
-export default function SignInModal() {
+export default function ForgetPasswordModal() {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const underLineStyles = makeTextFieldStyles();
@@ -37,31 +37,19 @@ export default function SignInModal() {
           inputProps={{ className: classes.input }}
           InputProps={{ classes: underLineStyles }}
         />
-        <Typography variant="body2" style={{ color: "#FFF", marginBottom: 7 }}>
-          رمز عبور
-        </Typography>
-
-        <TextField
-          classes={{ root: classes.inputContainer }}
-          variant="filled"
-          fullWidth
-          size="small"
-          inputProps={{ className: classes.input }}
-          InputProps={{ classes: underLineStyles }}
-        />
         <Button
           variant="outlined"
           color="primary"
           fullWidth
           className={classes.button}
         >
-          ورود
+          فراموشی رمز عبور
         </Button>
         <Button classes={{label:classes.buttonLable}}  className={classes.button} variant="text" color="primary" fullWidth>
-          ثبت نام نکرده اید؟
+         بازگشت به فرم ورود
         </Button>
         <Button classes={{label:classes.buttonLable}}  className={classes.button} variant="text" color="primary" fullWidth>
-          رمز عبور خود را فراموش کرده اید!
+          ثبت نام
         </Button>
       </div>
     </Modal>

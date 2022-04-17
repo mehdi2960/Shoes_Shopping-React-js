@@ -19,7 +19,7 @@ const makeTextFieldStyles = makeStyles({
   },
 });
 
-export default function SignInModal() {
+export default function ChangePasswordModal() {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const underLineStyles = makeTextFieldStyles();
@@ -27,7 +27,7 @@ export default function SignInModal() {
     <Modal open={open} onClose={() => setOpen(false)}>
       <div className={classes.root}>
         <Typography variant="body2" style={{ color: "#FFF", marginBottom: 7 }}>
-          تلفن همراه:
+          رمز عبور:
         </Typography>
         <TextField
           classes={{ root: classes.inputContainer }}
@@ -38,9 +38,8 @@ export default function SignInModal() {
           InputProps={{ classes: underLineStyles }}
         />
         <Typography variant="body2" style={{ color: "#FFF", marginBottom: 7 }}>
-          رمز عبور
+           تکرار رمز عبور:
         </Typography>
-
         <TextField
           classes={{ root: classes.inputContainer }}
           variant="filled"
@@ -55,13 +54,16 @@ export default function SignInModal() {
           fullWidth
           className={classes.button}
         >
-          ورود
+          تغییر رمز عبور
         </Button>
-        <Button classes={{label:classes.buttonLable}}  className={classes.button} variant="text" color="primary" fullWidth>
-          ثبت نام نکرده اید؟
-        </Button>
-        <Button classes={{label:classes.buttonLable}}  className={classes.button} variant="text" color="primary" fullWidth>
-          رمز عبور خود را فراموش کرده اید!
+        <Button
+          classes={{ label: classes.buttonLable }}
+          className={classes.button}
+          variant="text"
+          color="primary"
+          fullWidth
+        >
+          بازگشت به فرم ورود
         </Button>
       </div>
     </Modal>
