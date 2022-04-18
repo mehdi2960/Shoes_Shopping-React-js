@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Button, Fade } from "@material-ui/core";
 import Avatar from "../../../assets/images/avatar1.png";
 import useStyles from "./menuprofile.styles";
+import { LoginContext } from "../../../contexts/LoginContext";
+import { SIGNIN, SIGNUP } from "../../../constants/ActionTypes";
 
 export default function MenuProfile() {
+  const { dispatch } = useContext(LoginContext);
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   return (
@@ -41,6 +44,10 @@ export default function MenuProfile() {
                 size="medium"
                 color="primary"
                 fullWidth
+                onClick={() => {
+                  setOpen(false);
+                  dispatch({ type: SIGNIN });
+                }}
               >
                 ورود
               </Button>
@@ -50,6 +57,10 @@ export default function MenuProfile() {
                 color="primary"
                 fullWidth
                 style={{ marginTop: 5 }}
+                onClick={() => {
+                  setOpen(false);
+                  dispatch({ type: SIGNUP });
+                }}
               >
                 ثبت نام
               </Button>

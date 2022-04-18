@@ -1,20 +1,36 @@
-import React, { useState ,useEffect} from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Modal, Typography, Button } from "@material-ui/core";
 import useStyles from "./index.styles";
 import ReactCodeInput from "react-code-input";
+import { LoginContext } from "../../contexts/LoginContext";
+import { CHANGE_PASSWORD, FORGET_PASSWORD, SIGNIN, SIGNUP } from "../../constants/ActionTypes";
 
 export default function CodeModal() {
+  const { state, dispatch } = useContext(LoginContext);
   const classes = useStyles();
-  const [open, setOpen] = useState(true);
+  // const [open, setOpen] = useState(false);
   const [counter, setCounter] = useState(10);
-useEffect(() => {
-  setInterval (() => {
-    setCounter((oldCounter)=>(oldCounter===0?0:oldCounter-1))
-  },1000)
-}, [])
+  const codeType=localStorage.getItem("loginCodeType");
+  const sendCode=()=>{
+    setCounter(10)
+  }
+
+  useEffect(() => {
+    setInterval(() => {
+      setCounter((oldCounter) => (oldCounter === 0 ? 0 : oldCounter - 1));
+    }, 1000);
+  }, []);
+
+  const checkCode=()=>{
+    if(codeType==='signUp'){
+      //
+    }else{
+      dispatch({type:CHANGE_PASSWORD})
+    }
+  }
 
   return (
-    <Modal open={open} onClose={() => setOpen(false)}>
+    <Modal open={state.code} onClose={() => dispatch({ type: "closeAll" })}>
       <div className={classes.root}>
         <Typography variant="body2" style={{ color: "#FFF", marginBottom: 7 }}>
           کد ارسالی به تلفن همراهتان را در کادر زیر وارد کنید:
@@ -42,20 +58,24 @@ useEffect(() => {
             }}
           />
         </div>
-        {counter !==0 ?(
-              <Typography variant="body2" className={classes.divText}>
-                  {counter} ثانیه تا پایان اعتبار کد
-              </Typography>
-           ):
-           <Button variant="text" color="primary">
-             <Typography variant="body2" className={classes.counterText}>درخواست مجدد کد</Typography>
-           </Button>
-           }
+        {counter !== 0 ? (
+          <Typography variant="body2" className={classes.divText}>
+            {counter} ثانیه تا پایان اعتبار کد
+          </Typography>
+        ) : (
+          <Button variant="text" color="primary" onClick={sendCode}>
+            <Typography variant="body2" className={classes.counterText}>
+              درخواست مجدد کد
+            </Typography>
+          </Button>
+        )}
         <Button
+          disabled={counter===0}
           variant="outlined"
           color="primary"
           fullWidth
           className={classes.button}
+          onClick={checkCode}
         >
           تایید کد
         </Button>
@@ -65,6 +85,7 @@ useEffect(() => {
           variant="text"
           color="primary"
           fullWidth
+          onClick={()=>{dispatch({type:codeType==='signUp'?SIGNUP:FORGET_PASSWORD})}}
         >
           اصلاح شماره موبایل
         </Button>
@@ -74,6 +95,7 @@ useEffect(() => {
           variant="text"
           color="primary"
           fullWidth
+          onClick={()=>dispatch({type:SIGNIN})}
         >
           ورود به سایت
         </Button>

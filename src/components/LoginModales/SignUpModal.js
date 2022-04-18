@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState ,useContext} from "react";
 import {
   Modal,
   TextField,
@@ -8,6 +8,8 @@ import {
   Grid,
 } from "@material-ui/core";
 import useStyles from "./index.styles";
+import {LoginContext} from "../../contexts/LoginContext";
+import { SIGNIN , CODE} from "../../constants/ActionTypes";
 
 const makeTextFieldStyles = makeStyles({
   underline: {
@@ -21,11 +23,16 @@ const makeTextFieldStyles = makeStyles({
 });
 
 export default function SignUpModal() {
+  const{state,dispatch}=useContext(LoginContext)
   const classes = useStyles();
-  const [open, setOpen] = useState(false);
+  // const [open, setOpen] = useState(false);
   const underLineStyles = makeTextFieldStyles();
+  const signUp=()=>{
+    localStorage.setItem('loginCodeType','signUp')
+     dispatch({type:CODE})
+  }
   return (
-    <Modal open={open} onClose={() => setOpen(false)}>
+    <Modal open={state.signup} onClose={() => dispatch({type:'closeAll'})}>
       <div className={classes.rootSingUp}>
         <Grid className={classes.formGrid} item lg={6} xs={12}>
           <Typography
@@ -99,6 +106,7 @@ export default function SignUpModal() {
           color="primary"
           fullWidth
           className={classes.button}
+          onClick={signUp}
         >
           ثبت نام
         </Button>
@@ -109,6 +117,7 @@ export default function SignUpModal() {
           variant="text"
           color="primary"
           fullWidth
+          onClick={()=>dispatch({type:SIGNIN})}
         >
           قبلا ثبت نام کرده اید؟
         </Button>

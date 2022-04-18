@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   Modal,
   TextField,
@@ -7,6 +7,8 @@ import {
   Button,
 } from "@material-ui/core";
 import useStyles from "./index.styles";
+import { LoginContext } from "../../contexts/LoginContext";
+import { CODE } from "../../constants/ActionTypes";
 
 const makeTextFieldStyles = makeStyles({
   underline: {
@@ -20,11 +22,19 @@ const makeTextFieldStyles = makeStyles({
 });
 
 export default function ForgetPasswordModal() {
+  const { state, dispatch } = useContext(LoginContext);
   const classes = useStyles();
-  const [open, setOpen] = useState(false);
+  // const [open, setOpen] = useState(false);
   const underLineStyles = makeTextFieldStyles();
+  const forgetPassword = () => {
+    localStorage.setItem('loginCodeType','forgetPassword')
+    dispatch({ type: CODE });
+  };
   return (
-    <Modal open={open} onClose={() => setOpen(false)}>
+    <Modal
+      open={state.forgetPassword}
+      onClose={() => dispatch({ type: "closeAll" })}
+    >
       <div className={classes.root}>
         <Typography variant="body2" style={{ color: "#FFF", marginBottom: 7 }}>
           تلفن همراه:
@@ -45,10 +55,22 @@ export default function ForgetPasswordModal() {
         >
           فراموشی رمز عبور
         </Button>
-        <Button classes={{label:classes.buttonLable}}  className={classes.button} variant="text" color="primary" fullWidth>
-         بازگشت به فرم ورود
+        <Button
+          classes={{ label: classes.buttonLable }}
+          className={classes.button}
+          variant="text"
+          color="primary"
+          fullWidth
+        >
+          بازگشت به فرم ورود
         </Button>
-        <Button classes={{label:classes.buttonLable}}  className={classes.button} variant="text" color="primary" fullWidth>
+        <Button
+          classes={{ label: classes.buttonLable }}
+          className={classes.button}
+          variant="text"
+          color="primary"
+          fullWidth
+        >
           ثبت نام
         </Button>
       </div>
