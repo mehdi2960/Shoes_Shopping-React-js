@@ -7,6 +7,19 @@ import CartItemContetn from "./CartItemContetn";
 export default function CartButton() {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
+
+  // useEffect(() => {
+  //   const cartContent = document.getElementById("cartContent");
+
+  //   document.addEventListener("click", function (event) {
+  //     const isClickTnside = cartContent.contains(event.target);
+
+  //     if (!isClickTnside) {
+  //       setOpen(false);
+  //     }
+  //   });
+  // }, []);
+
   return (
     <div className={classes.root} onMouseEnter={() => setOpen(true)} onMouseLeave={()=>setOpen(false)}>
       <div>

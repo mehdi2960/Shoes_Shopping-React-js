@@ -21,7 +21,7 @@ export default makeStyles((theme) => ({
     alignItems: "center",
     justifyContent: "center",
     position: "absolute",
-    right: 27,
+    right: 17,
     top: -4,
   },
   cartItem: {

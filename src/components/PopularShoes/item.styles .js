@@ -15,7 +15,13 @@ export default makeStyles((theme) => ({
     position:"relative",
     padding:12,
     cursor:"pointer",
-    marginBottom:25
+    marginBottom:25,
+    [theme.breakpoints.down('xs')]:{
+      width: 164,
+      height: 219,
+      padding:8,
+
+    }
   },
   image: {
     width: "60%",
