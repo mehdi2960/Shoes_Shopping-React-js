@@ -1,6 +1,6 @@
 import { Typography } from "@material-ui/core";
 import React from "react";
-import ShoesIcon from "../../../assets/images/shoes.png";
+import ShoesIcon from "../../../assets/images/S6.png";
 import DeleteIcon from "@material-ui/icons/Delete";
 
 export default function () {

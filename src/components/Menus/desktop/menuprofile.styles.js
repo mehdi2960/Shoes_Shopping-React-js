@@ -22,6 +22,8 @@ export default makeStyles((theme) => ({
     position:"absolute",
     left:"-380%",
     borderRadius:5,
-    padding:15
+    padding:15,
+    zIndex:10
+
   }
 }));

@@ -32,5 +32,6 @@ export default makeStyles((theme) => ({
     right:"-60%",
     borderRadius:5,
     padding:10,
+    zIndex:10,
   }
 }));

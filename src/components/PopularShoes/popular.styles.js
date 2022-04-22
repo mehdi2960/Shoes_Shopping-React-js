@@ -1,0 +1,31 @@
+import { makeStyles } from "@material-ui/core";
+export default makeStyles((theme) => ({
+    root:{
+      marginTop:15,
+      marginBottom:10,
+      paddingTop:5,
+      paddingBottom:5,
+      position:"relative",
+      "&:before":{
+          content:"''",
+          position:"absolute",
+          width:2,
+          height:"100%",
+          backgroundColor:"#d32f2f",
+          borderRadius:10,
+      },
+      [theme.breakpoints.down('xs')]:{
+          width:"95%",
+          marginLeft:10,
+          marginRight:10
+      }
+    },
+    title:{
+        color:"#fff",
+        fontSize:13,
+        marginLeft:13
+    },
+    btn:{
+        color:"#d32f2f"
+    }
+}));
