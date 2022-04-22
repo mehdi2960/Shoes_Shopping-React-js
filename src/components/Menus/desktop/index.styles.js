@@ -2,8 +2,8 @@ import { makeStyles } from "@material-ui/core";
 export default makeStyles((theme) => ({
   root: {
     width: "100%",
-    height: 60,
-    // backgroundColor: "#000",
+    height: 50,
+    backgroundColor: "#131a21",
     padding:10,
     display: "flex",
     flexDirection: "row",
@@ -24,7 +24,8 @@ export default makeStyles((theme) => ({
     height:"100%"
   },
   activeMenu: {
-    color: theme.palette.text.primary
+    color: theme.palette.text.primary,
+    // position:"relative"
   },
   inactiveMenu: {
     color: theme.palette.text.inActiveMenu
@@ -42,6 +43,8 @@ export default makeStyles((theme) => ({
       alignItems:"center",
       justifyContent:"space-around",
       paddingLeft:40,
-      marginRight:20
+      marginRight:20,
+      // position:"relative"
+
   }
 }));

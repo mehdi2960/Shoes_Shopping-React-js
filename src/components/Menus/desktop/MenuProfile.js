@@ -10,8 +10,8 @@ export default function MenuProfile() {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   return (
-    <div className={classes.root}>
-      <div onClick={() => setOpen(!open)}>
+    <div className={classes.root} onMouseEnter={()=>setOpen(true)} onMouseLeave={()=>setOpen(false)}>
+      <div>
         <img src={Avatar} alt="" className={classes.profileImg} />
       </div>
       {/* {open ? ( */}
